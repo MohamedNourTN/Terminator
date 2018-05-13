@@ -1,20 +1,21 @@
 # Terminator : metasploit payload generator/compiller
 
-(https://image.ibb.co/cK5vFd/e.jpg)
+![Terminator](https://image.ibb.co/cK5vFd/e.jpg)
 
 # Payload List : 
-- 1) Binaries Payloads
+
+# Binaries Payloads
     1) Android
     2) Windows
     3) Linux
     4) Mac OS
 
-- 2) Scripting Payloads
+# Scripting Payloads
     1) Python
     2) Perl
     3) Bash
 
-- 3) Web Payloads
+# Web Payloads
     1) ASP
     2) JSP
     3) War
