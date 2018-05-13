@@ -1,4 +1,4 @@
-# Terminator : metasploit payload generator/compiller
+# Terminator : Metasploit Payload Generator
 
 ![Terminator](https://image.ibb.co/cK5vFd/e.jpg)
 
