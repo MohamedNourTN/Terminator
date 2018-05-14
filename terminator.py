@@ -27,8 +27,8 @@ def banner():
 
 			  _________
 			/'        /|
-		   / MOHAMED / |_
-		  /   NOUR  /  //|
+		   /         / |_
+		  /         /  //|
 		 /_________/  ////|
 		|   _ _    | 8o////|
 		| /'// )_  |   8///|
@@ -47,7 +47,7 @@ def banner():
 		  d'      `b `b     |  GENERATOR  |
 		 d'           `b    ---------------
 		d'             `b
-
+              AUTHORS:  MOHAMED NOUR & SABER SEBRI
 
 List payloads:
 
