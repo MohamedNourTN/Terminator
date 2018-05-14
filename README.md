@@ -2,6 +2,10 @@
 
 ![Terminator](https://image.ibb.co/cK5vFd/e.jpg)
 
+# Whats New ?
+- Auto Listener : Auto Meterpreter session listener .
+- IP Poisoner : Auto upload the payload to your apache server for easy hacking & SE .
+
 # Payload List : 
 
 # Binaries Payloads
@@ -20,10 +24,6 @@
     2) JSP
     3) War
     
-# Whats New ?
-# Auto Listener : Auto Meterpreter session listener .
-# IP Poisoner : Auto upload the payload to your apache server for easy hacking & SE .
-
 
 - The author does not hold any responsibility for the bad use
 of this tool, remember that attacking targets without prior
