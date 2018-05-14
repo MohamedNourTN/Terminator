@@ -20,7 +20,7 @@ def msf():
 	if ch in yes :
 		os.system("curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall")  
 	else :
-		print "Then Rou7 Nayyek"
+		print "OK BB !"
 		sys.exit(0)
 def banner():
 	print ("""
