@@ -1,10 +1,6 @@
 # Terminator : Metasploit Payload Generator
 
-![Terminator](https://image.ibb.co/cK5vFd/e.jpg)
-
-# Whats New ?
-- Auto Listener : Auto Meterpreter session listener .
-- IP Poisoner : Auto upload the payload to your apache server for easy hacking & SE .
+![Terminator](https://image.ibb.co/e6GYMT/Screenshot_at_2018_05_24_16_21_56.png)
 
 # Payload List : 
 
@@ -23,6 +19,10 @@
     1) ASP
     2) JSP
     3) War
+    
+# Encrypters
+    1) APK Encrypter
+    2) Python Encrypter
     
 
 - The author does not hold any responsibility for the bad use
