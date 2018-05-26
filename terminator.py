@@ -28,10 +28,9 @@ _________ _______  _______  _______ _________ _        _______ _________ _______
    )_(   (_______/|/   \__/|/     \|\_______/|/    )_)|/     \|   )_(   (_______)|/   \__/
    %s
 
-                         [+]    Metasploit Payload Generator     [+]
-                         [+] Created By MohamedNour & SaberSebri [+]
-                Visit https://github.com/MohamedNourTN/Terminator to update
-
+                        [+]    Metasploit Payload Generator     [+]
+                        [+] Created By MohamedNour & SaberSebri [+]
+                        
 
 %s
 List payloads:
