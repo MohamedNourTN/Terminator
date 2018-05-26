@@ -12,6 +12,51 @@ B = '\033[94m' #blue
 R = '\033[91m' #red
 W = '\033[0m' #white
 ##################################
+####################  Banner  #######################
+
+def banner():
+    print ("""
+
+%s
+_________ _______  _______  _______ _________ _        _______ _________ _______  _______ 
+\__   __/(  ____ \(  ____ )(       )\__   __/( (    /|(  ___  )\__   __/(  ___  )(  ____ )
+   ) (   | (    \/| (    )|| () () |   ) (   |  \  ( || (   ) |   ) (   | (   ) || (    )|
+   | |   | (__    | (____)|| || || |   | |   |   \ | || (___) |   | |   | |   | || (____)|
+   | |   |  __)   |     __)| |(_)| |   | |   | (\ \) ||  ___  |   | |   | |   | ||     __)
+   | |   | (      | (\ (   | |   | |   | |   | | \   || (   ) |   | |   | |   | || (\ (   
+   | |   | (____/\| ) \ \__| )   ( |___) (___| )  \  || )   ( |   | |   | (___) || ) \ \__
+   )_(   (_______/|/   \__/|/     \|\_______/|/    )_)|/     \|   )_(   (_______)|/   \__/
+   %s
+
+                         [+]    Metasploit Payload Generator     [+]
+                         [+] Created By MohamedNour & SaberSebri [+]
+                Visit https://github.com/MohamedNourTN/Terminator to update
+
+
+%s
+List payloads:
+
+ 1) Binaries Payloads
+ 2) Scripting Payloads
+ 3) Web Payloads
+ 4) Encrypters
+ 0) Exit
+"""%(R,G,B))
+    banner = raw_input(" Select from the banner : ")
+    print("")
+
+    if banner == "1":
+	    bin()
+    elif banner == "2":
+	    script()
+    elif banner == "3":
+	    web()
+    elif banner == "4":
+	    enc()
+
+    else:
+        sys.exit();
+####################  BANNER  #######################
 def clear():
 	if os.name == 'nt':
 		os.system('cls')
@@ -34,7 +79,7 @@ def bin():
   2) Windows
   3) Linux
   4) Mac OS
-
+  0) Back to menu
 """)
 
 	bn = raw_input("Set Payload: ")
@@ -48,13 +93,14 @@ def bin():
 	elif bn == "4":
 		mac()
 	else:
-		menu()
+		banner()
 
 def web():
 	print("""
   1) ASP
   2) JSP
   3) War
+  0) Back to menu
 
 """)
 
@@ -67,14 +113,15 @@ def web():
 	elif wb == "3":
 		war()
 	else:
-		menu()
+		banner()
 
 def script():
 	print("""
   1) Python
   2) Perl
   3) Bash
-
+  0) Back to menu
+  
 """)
 
 	sc = raw_input("Set Payload: ")
@@ -86,12 +133,13 @@ def script():
 	elif sc == "3":
 		bash()
 	else:
-		menu()
+		banner()
 
 def enc():
 	print("""
   1) APK Encrypter
   2) Python Encrypter
+  0) Back to menu
 
 """)
         en = raw_input("Select Encrypter : ")
@@ -101,7 +149,7 @@ def enc():
         elif en == "2":
                 pyenc()
         else:
-                menu()
+                banner()
 
 
 def android():
@@ -502,61 +550,7 @@ def pyenc():
             os.system("git clone https://github.com/Hadi999/NXcrypt.git")
             os.system("cd NXcrypt && sudo python NXcrypt.py -f ../%s -o ../%s"%(pypayload,pyoutput))
 
-####################  BANNER  #######################
-def banner():
-    print ("""
+####################  BEGIN  #######################
 
-%s
-_________ _______  _______  _______ _________ _        _______ _________ _______  _______ 
-\__   __/(  ____ \(  ____ )(       )\__   __/( (    /|(  ___  )\__   __/(  ___  )(  ____ )
-   ) (   | (    \/| (    )|| () () |   ) (   |  \  ( || (   ) |   ) (   | (   ) || (    )|
-   | |   | (__    | (____)|| || || |   | |   |   \ | || (___) |   | |   | |   | || (____)|
-   | |   |  __)   |     __)| |(_)| |   | |   | (\ \) ||  ___  |   | |   | |   | ||     __)
-   | |   | (      | (\ (   | |   | |   | |   | | \   || (   ) |   | |   | |   | || (\ (   
-   | |   | (____/\| ) \ \__| )   ( |___) (___| )  \  || )   ( |   | |   | (___) || ) \ \__
-   )_(   (_______/|/   \__/|/     \|\_______/|/    )_)|/     \|   )_(   (_______)|/   \__/
-   %s
-
-                         [+]    Metasploit Payload Generator     [+]
-                         [+] Created By MohamedNour & SaberSebri [+]
-                Visit https://github.com/MohamedNourTN/Terminator to update
-
-
-%s
-List payloads:
-
- 1) Binaries Payloads
- 2) Scripting Payloads
- 3) Web Payloads
- 4) Encrypters
-
-"""%(R,G,B))
-####################  BANNER  #######################
-
-print("-----------------------------------------------")
-print("Is Metasploit Installed In Your Machine ? (Y/N)")
-print("-----------------------------------------------")
-
-mscheck = raw_input("Answer: ")
-if mscheck in no:
-	msf()
-elif mscheck in yes:
-	banner()
-else: 
-	banner()
-
-menu = raw_input(" Select from the menu : ")
-print("")
-
-if menu == "1":
-	bin()
-elif menu == "2":
-	script()
-elif menu == "3":
-	web()
-elif menu == "4":
-	enc()
-
-else:
-	menu()
-
+if __name__ == "__main__":
+    banner()
