@@ -42,7 +42,7 @@ List payloads:
  4) Encrypters
  0) Exit
 """%(R,G,B))
-    banner = raw_input(" Select from the banner : ")
+    banner = raw_input(" Select from menu : ")
     print("")
 
     if banner == "1":
