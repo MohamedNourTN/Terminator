@@ -30,7 +30,7 @@ _________ _______  _______  _______ _________ _        _______ _________ _______
 
                         [+]    Metasploit Payload Generator     [+]
                         [+] Created By MohamedNour & SaberSebri [+]
-                        
+
 
 %s
 List payloads:
@@ -41,7 +41,7 @@ List payloads:
  4) Encrypters
  0) Exit
 """%(R,G,B))
-    banner = raw_input(" Select from menu : ")
+    banner = raw_input(" Select from the menu : ")
     print("")
 
     if banner == "1":
@@ -56,14 +56,9 @@ List payloads:
     else:
         sys.exit();
 ####################  BANNER  #######################
-def clear():
-	if os.name == 'nt':
-		os.system('cls')
-	else:
-		os.system('clear')
-###############################
+
 def msf():
-	print "Do You Want To Install it ? "
+	print "Do You Want To Install it ? : "
 	ch = raw_input()
 	if ch in yes :
 		os.system("curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall")  
@@ -72,6 +67,12 @@ def msf():
 		sys.exit(0)
 
 
+def clear():
+	if os.name == 'nt':
+		os.system('cls')
+	else:
+		os.system('clear')
+###############################
 def bin():
 	print("""
   1) Android
@@ -550,6 +551,14 @@ def pyenc():
             os.system("cd NXcrypt && sudo python NXcrypt.py -f ../%s -o ../%s"%(pypayload,pyoutput))
 
 ####################  BEGIN  #######################
+print("-----------------------------------------------")
+print("Is Metasploit Installed In Your Machine ? (Y/N)")
+print("-----------------------------------------------")
 
-if __name__ == "__main__":
-    banner()
+mscheck = raw_input("Answer: ")
+if mscheck in no:
+	msf()
+elif mscheck in yes:
+	banner()
+else: 
+	banner()
